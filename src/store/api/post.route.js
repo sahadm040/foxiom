@@ -3,21 +3,16 @@ import { axiosApi } from "../axiosInstance/axiosInstance";
 
 // ----------------------------------- all characters api------------------------------------/
 
-export const allCharacters = createAsyncThunk("allCharacters", async () => {
+export const allList = createAsyncThunk("allPosts", async () => {
   const response = await axiosApi.get("posts");
-  // console.log("response", response);
   console.log("response", response.data);
-  //   return response.data;
   return response.data;
 });
 
 // ----------------------------------- single character api------------------------------------/
 
-export const characterSingleView = createAsyncThunk(
-  "characterSingleView",
-  async (id) => {
-    const response = await axiosApi.get(`posts/${id}`);
-    console.log("response", response);
-    return response.data;
-  }
-);
+export const SingleView = createAsyncThunk("SingleView", async (id) => {
+  const response = await axiosApi.get(`posts/${id}`);
+  console.log("response", response);
+  return response.data;
+});

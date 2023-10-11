@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import characterReducer from "./slices/characterSlice";
+import postReducer from "./slices/postSlice";
 export const store = configureStore({
   reducer: {
-    character: characterReducer,
+    post: postReducer,
   },
 });

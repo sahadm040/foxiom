@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { characterSingleView } from "../store/api/character.route";
+import { SingleView } from "../store/api/post.route";
 import { Button, Card, Container } from "react-bootstrap";
 import { Col, Row } from "reactstrap";
 
@@ -14,15 +14,15 @@ const SingleDetails = () => {
 
   useEffect(
     (id) => {
-      dispatch(characterSingleView(params.id));
+      dispatch(SingleView(params.id));
     },
     [dispatch, params.id]
   );
-  const { characterView } = useSelector((state) => state.character);
-  console.log("characterView", characterView);
+  const { postView } = useSelector((state) => state.post);
+  console.log("postView", postView);
   useEffect(() => {
-    setCharacter(characterView);
-  }, [characterView]);
+    setCharacter(postView);
+  }, [postView]);
   return (
     <div className="mt-5">
       <Container>

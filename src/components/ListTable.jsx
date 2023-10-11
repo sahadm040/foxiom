@@ -2,22 +2,22 @@ import React, { useEffect, useState } from "react";
 import { Badge, Table } from "reactstrap";
 import { Card, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { allCharacters } from "../store/api/character.route";
+import { allList } from "../store/api/post.route";
 import { map } from "lodash";
 import { Link } from "react-router-dom";
 
 const ListTable = () => {
   const dispatch = useDispatch();
-  const [characterListView, setCharacterListView] = useState();
-  console.log("characterListView", characterListView);
+  const [postListView, setPostListView] = useState();
+  console.log("characterListView", postListView);
 
   useEffect(() => {
-    dispatch(allCharacters());
+    dispatch(allList());
   }, [dispatch]);
-  const { characterViewObject } = useSelector((state) => state.character);
+  const { postViewArray } = useSelector((state) => state.post);
   useEffect(() => {
-    setCharacterListView(characterViewObject);
-  }, [characterViewObject]);
+    setPostListView(postViewArray);
+  }, [postViewArray]);
   return (
     <div className="my-4">
       <Container>
@@ -33,7 +33,7 @@ const ListTable = () => {
               </tr>
             </thead>
             <tbody>
-              {map(characterListView, (item, key) => (
+              {map(postListView, (item, key) => (
                 <tr key={key}>
                   <th scope="row">{item?.id}</th>
                   <td>{item?.title}</td>
